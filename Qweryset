@@ -1,0 +1,14 @@
+"""Создаем обЪект модели Buyer"""
+first_buyer=Buyer.objects.create(name='Dmitriy',balance=1500,age=20)
+second_buyer=Buyer.objects.create(name='VOVA',balance=1700,age=22)
+third_buyer=Buyer.objects.create(name='Vasya',balance=100,age=15)
+
+"""Создаем обЪект модели Game"""
+first_game = Game.objects.create(title='Game 1',cost=3,size=7,description='', age_limited=True)
+second_game = Game.objects.create(title='Game 2',cost=4,size=6,description='second game', age_limited=True)
+third_game = Game.objects.create(title='Game 3',cost=1,size=2,description=' game', age_limited=False)
+
+"""После создания всех объектов связываем их полем buyer у записей Game"""
+Game.objects.get(id=5).buyer.set((first_buyer,second_buyer,third_buyer))
+Game.objects.get(id=2).buyer.set((first_buyer,second_buyer))
+Game.objects.get(id=4).buyer.set((first_buyer,))
