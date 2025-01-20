@@ -1,0 +1,11 @@
+{% extends "fourth_task/menu.html" %}
+{% block content %}
+<body>
+{% block title%}<h1>Auto</h1>{% endblock %}
+{% for car in cars %}
+    <p>{{ car.name }} | {{ car.color }}  {{ car.price }} {{ car.year }}</p>
+    <button>Купить</button>
+{% endfor %}
+{% endblock %}
+</body>
+</html>

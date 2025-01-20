@@ -6,7 +6,7 @@ class Buyer(models.Model):
     balance = models.DecimalField(max_digits=10, decimal_places=2)
     age = models.IntegerField()
 
-    def __ne__(self):
+    def __str__(self):
         return self.name
 
 
@@ -20,3 +20,13 @@ class Game(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Auto(models.Model):
+    name = models.CharField(max_length=100)
+    color = models.CharField(max_length=100)
+    year = models.IntegerField()
+    buyer = models.ManyToManyField(Buyer, related_name='auto')
+
+    def __str__(self):
+        return self.name
