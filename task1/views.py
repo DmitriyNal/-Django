@@ -1,9 +1,10 @@
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from task1.form import UserRegister
-from task1.models import Buyer, Auto
+from task1.models import Buyer, Auto, News
 
 
 def index(request):
@@ -74,3 +75,12 @@ def sign_up_by_django(request):
         form = UserRegister()
     info['form'] = form
     return render(request, 'fifth_tas/egistration_page.html', info)
+
+
+def pl_news(request):
+    news_list = News.objects.all()
+    paginator = Paginator(news_list, 10)
+    page = request.GET.get('page')
+    news = paginator.get_page(page)
+    context = {'news': news}
+    return render(request, 'news.html', context)

@@ -30,3 +30,9 @@ class Auto(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class News(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    data = models.DateTimeField()
